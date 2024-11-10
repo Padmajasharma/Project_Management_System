@@ -1,51 +1,54 @@
 <template>
-  <div class="inbox-container d-flex">
-    <!-- Sidebar with Mail List and Compose Button -->
-    <div class="sidebar col-3 p-3 bg-light border-right">
-      <button class="btn btn-primary w-100 mb-3" @click="composeNewMail">Compose</button>
-      <input
-        type="text"
-        v-model="searchQuery"
-        placeholder="Search mail"
-        class="form-control mb-3"
-      />
-      <ul class="list-group">
-        <li
-          v-for="mail in filteredMails"
-          :key="mail.id"
-          class="list-group-item list-group-item-action"
-          :class="{ active: selectedMail && selectedMail.id === mail.id }"
-          @click="openMail(mail)"
-        >
-          <div><strong>{{ mail.from }}</strong></div>
-          <div class="small text-muted">{{ mail.subject }}</div>
-        </li>
-      </ul>
-    </div>
+  <div class="container mt-5">
+    <!-- Navbar Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" @click="goToDashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" @click="goToMyTeam">My Team</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" @click="goToInbox">Inbox</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-danger my-2 my-sm-0" @click="logout">Logout</button>
+      </div>
+    </nav>
 
-    <!-- Mail Content Area -->
-    <div class="content col-9 p-3">
-      <div v-if="selectedMail" class="mail-view">
-        <h5>{{ selectedMail.subject }}</h5>
-        <p><strong>From:</strong> {{ selectedMail.from }}</p>
-        <hr />
-        <div class="chat-history">
-          <div v-for="msg in selectedMail.messages" :key="msg.id" class="message">
-            <p><strong>{{ msg.sender }}:</strong> {{ msg.content }}</p>
+    <!-- Chat Container -->
+    <div class="container p-3 chat-container">
+      <div class="chat-header d-flex justify-content-between align-items-center mb-3">
+        <h4 class="m-0">Inbox Chat</h4>
+        <button class="btn btn-primary" @click="startNewChat">Compose</button>
+      </div>
+
+      <!-- Chat messages area -->
+      <div class="chat-box mb-3" ref="chatBox">
+        <div v-for="message in messages" :key="message.timestamp" class="message-container">
+          <div :class="{'message-sent': message.isMine, 'message-received': !message.isMine}">
+            <p class="message-content">{{ message.content }}</p>
+            <div class="message-info">
+              <span class="message-from">{{ message.from }}</span>
+              <span class="message-timestamp">{{ message.timestamp }}</span>
+            </div>
           </div>
         </div>
-        <hr />
-        <div class="message-input">
-          <input
-            v-model="newMessage"
-            placeholder="Write a message..."
-            class="form-control mb-2"
-          />
-          <button @click="sendMessage" class="btn btn-primary">Send</button>
-        </div>
       </div>
-      <div v-else class="d-flex justify-content-center align-items-center">
-        <p class="text-muted">Select a message to view</p>
+
+      <!-- Message input area -->
+      <div class="input-area d-flex">
+        <input 
+          type="text" 
+          v-model="newMessage" 
+          class="form-control me-2" 
+          placeholder="Write a message..."
+          @keyup.enter="sendMessage"
+        />
+        <button class="btn btn-success" @click="sendMessage">Send</button>
       </div>
     </div>
   </div>
@@ -55,65 +58,131 @@
 export default {
   data() {
     return {
-      searchQuery: '',
-      selectedMail: null,
-      newMessage: '',
-      mails: [
-        {
-          id: 1,
-          from: 'user@example.com',
-          subject: 'Welcome to the project tracker!',
-          messages: [
-            { id: 1, sender: 'user@example.com', content: 'Hello, Padmaja!' },
-            { id: 2, sender: 'Padmaja Sharma', content: 'Hello! Thank you for the message.' },
-          ],
-        },
-        // Additional sample mails...
+      messages: [
+        { from: 'John Doe', content: 'Hello, how can I assist you?', timestamp: '10:00 AM', isMine: false },
+        { from: 'Me', content: 'I wanted to discuss the project details.', timestamp: '10:05 AM', isMine: true },
+        { from: 'John Doe', content: 'Sure, let’s go over it.', timestamp: '10:07 AM', isMine: false },
       ],
+      newMessage: '',
     };
   },
-  computed: {
-    filteredMails() {
-      return this.mails.filter((mail) =>
-        mail.from.includes(this.searchQuery) || mail.subject.includes(this.searchQuery)
-      );
-    },
-  },
   methods: {
-    composeNewMail() {
-      // Handle the compose mail action
-      alert('Compose mail clicked');
+    goToDashboard() {
+      this.$router.push('/dashboard');
     },
-    openMail(mail) {
-      this.selectedMail = mail;
+    goToMyTeam() {
+      this.$router.push('/dashboard/myteam');
+    },
+    goToInbox() {
+      this.$router.push('/dashboard/inbox');
+    },
+    logout() {
+      this.$router.push('/');
+    },
+    startNewChat() {
+      alert('Start a new chat');
     },
     sendMessage() {
       if (this.newMessage.trim()) {
-        this.selectedMail.messages.push({
-          id: Date.now(),
-          sender: 'Padmaja Sharma',
+        this.messages.push({
+          from: 'Me',
           content: this.newMessage,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          isMine: true,
         });
         this.newMessage = '';
+        this.scrollToBottom();
       }
     },
+    scrollToBottom() {
+      this.$nextTick(() => {
+        this.$refs.chatBox.scrollTop = this.$refs.chatBox.scrollHeight;
+      });
+    },
+  },
+  mounted() {
+    this.scrollToBottom();
   },
 };
 </script>
 
 <style scoped>
-.inbox-container {
-  height: 100vh;
+.container {
+  max-width: 600px;
+  background-color: #f5f7fa;
+  border-radius: 8px;
 }
-.sidebar {
-  height: 100%;
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.chat-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+.chat-box {
+  height: 400px;
   overflow-y: auto;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
 }
-.chat-history {
-  max-height: 300px;
-  overflow-y: auto;
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
-.message-input input {
-  margin-top: 10px;
+
+.message-sent {
+  align-self: flex-end;
+  background-color: #dcf8c6;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 60%;
+  color: #333;
+}
+
+.message-received {
+  align-self: flex-start;
+  background-color: #f1f1f1;
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 60%;
+  color: #333;
+}
+
+.message-content {
+  margin: 0;
+  font-size: 14px;
+}
+
+.message-info {
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-area {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+}
+
+.form-control {
+  border-radius: 20px;
+}
+
+.btn-success {
+  border-radius: 20px;
 }
 </style>
