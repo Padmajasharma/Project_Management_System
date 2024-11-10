@@ -25,21 +25,24 @@
       <div class="chat-list">
         <h5 class="chat-list-header">Messages</h5>
         <ul class="list-group">
-          <li class="list-group-item" v-for="message in messages" :key="message.timestamp" @click="selectMessage(message)">
-            {{ message.from }} - {{ message.timestamp }}
+          <li class="list-group-item" 
+              v-for="(chat, index) in uniqueChats" 
+              :key="index" 
+              @click="selectChat(chat.from)">
+            from: {{ chat.from }} - {{ chat.timestamp }}
           </li>
         </ul>
       </div>
 
       <!-- Chat Box on the right -->
-      <div class="chat-container">
+      <div class="chat-container" v-if="selectedChat">
         <div class="chat-header d-flex justify-content-between align-items-center">
-          <h4 class="m-0">Chat with {{ selectedMessage?.from || 'Select a Chat' }}</h4>
+          <h4 class="m-0">Chat with {{ selectedChat }}</h4>
           <button class="btn btn-primary" @click="startNewChat">Compose</button>
         </div>
 
         <div class="chat-box" ref="chatBox">
-          <div v-for="msg in selectedMessages" :key="msg.timestamp" class="message-container">
+          <div v-for="msg in filteredMessages" :key="msg.timestamp" class="message-container">
             <div :class="{'message-sent': msg.isMine, 'message-received': !msg.isMine}">
               <p class="message-content">{{ msg.content }}</p>
               <div class="message-info">
@@ -74,11 +77,26 @@ export default {
         { from: 'John Doe', content: 'Hello, how can I assist you?', timestamp: '10:00 AM', isMine: false },
         { from: 'Me', content: 'I wanted to discuss the project details.', timestamp: '10:05 AM', isMine: true },
         { from: 'John Doe', content: 'Sure, let’s go over it.', timestamp: '10:07 AM', isMine: false },
+        { from: 'Alice', content: 'Hey, any updates on the project?', timestamp: '11:15 AM', isMine: false },
+        { from: 'Me', content: 'I’ll send over the details shortly.', timestamp: '11:20 AM', isMine: true },
       ],
-      selectedMessages: [],
-      selectedMessage: null,
+      selectedChat: null,
       newMessage: '',
     };
+  },
+  computed: {
+    uniqueChats() {
+      const uniqueSenders = new Map();
+      this.messages.forEach((msg) => {
+        if (!uniqueSenders.has(msg.from) && !msg.isMine) {
+          uniqueSenders.set(msg.from, msg);
+        }
+      });
+      return Array.from(uniqueSenders.values());
+    },
+    filteredMessages() {
+      return this.messages.filter(msg => msg.from === this.selectedChat || (msg.isMine && this.selectedChat));
+    },
   },
   methods: {
     goToDashboard() {
@@ -96,13 +114,13 @@ export default {
     startNewChat() {
       alert('Start a new chat');
     },
-    selectMessage(message) {
-      this.selectedMessage = message;
-      this.selectedMessages = this.messages.filter(msg => msg.from === message.from);
+    selectChat(chatFrom) {
+      this.selectedChat = chatFrom;
+      this.scrollToBottom();
     },
     sendMessage() {
-      if (this.newMessage.trim() && this.selectedMessage) {
-        this.selectedMessages.push({
+      if (this.newMessage.trim() && this.selectedChat) {
+        this.messages.push({
           from: 'Me',
           content: this.newMessage,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
