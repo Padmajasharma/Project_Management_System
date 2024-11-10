@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
       <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
       <div class="collapse navbar-collapse">
@@ -14,48 +14,50 @@
             <a class="nav-link" @click="goToInbox">Inbox</a>
           </li>
         </ul>
-        <button class="btn btn-outline-danger my-2 my-sm-0" @click="logout">Logout</button>
+        <button class="btn btn-outline-danger my-2 my-sm-0 ml-auto" @click="logout">Logout</button>
       </div>
     </nav>
-    <div class="card mb-4">
-      <div class="card-header">
-        Project Submissions
+    <div class="main-content">
+      <div class="card mb-4 shadow-lg">
+        <div class="card-header">
+          Project Submissions
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Feedback</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="submission in submissions" :key="submission.id">
+                <td>{{ submission.date }}</td>
+                <td>{{ submission.title }}</td>
+                <td>{{ submission.status }}</td>
+                <td>{{ submission.feedback }}</td>
+                <td>
+                  <button class="btn btn-primary btn-sm" @click="upload(submission)">Upload</button>
+                  <button class="btn btn-secondary btn-sm" @click="view(submission)">View</button>
+                  <button class="btn btn-warning btn-sm" @click="review(submission)">Review</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="card-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Title</th>
-              <th>Status</th>
-              <th>Feedback</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="submission in submissions" :key="submission.id">
-              <td>{{ submission.date }}</td>
-              <td>{{ submission.title }}</td>
-              <td>{{ submission.status }}</td>
-              <td>{{ submission.feedback }}</td>
-              <td>
-                <button class="btn btn-primary btn-sm" @click="upload(submission)">Upload</button>
-                <button class="btn btn-secondary btn-sm" @click="view(submission)">View</button>
-                <button class="btn btn-warning btn-sm" @click="review(submission)">Review</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        Progress
-      </div>
-      <div class="card-body">
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" :style="{ width: progress + '%' }">
-            {{ progress }}%
+      <div class="card shadow-lg">
+        <div class="card-header">
+          Progress
+        </div>
+        <div class="card-body">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" :style="{ width: progress + '%' }">
+              {{ progress }}%
+            </div>
           </div>
         </div>
       </div>
@@ -76,29 +78,28 @@ export default {
     };
   },
   methods: {
-  logout() {
-    this.$router.push('/');
+    logout() {
+      this.$router.push('/');
+    },
+    upload(submission) {
+      alert(`Upload clicked for ${submission.title}`);
+    },
+    view(submission) {
+      alert(`View clicked for ${submission.title}`);
+    },
+    review(submission) {
+      alert(`Review clicked for ${submission.title}`);
+    },
+    goToMyTeam() {
+      this.$router.push('/dashboard/myteam');
+    },
+    goToDashboard() {
+      this.$router.push('/dashboard');
+    },
+    goToInbox() {
+      this.$router.push('/dashboard/inbox');
+    },
   },
-  upload(submission) {
-    alert(`Upload clicked for ${submission.title}`);
-  },
-  view(submission) {
-    alert(`View clicked for ${submission.title}`);
-  },
-  review(submission) {
-    alert(`Review clicked for ${submission.title}`);
-  },
-  goToMyTeam() {
-    this.$router.push('/dashboard/myteam');
-  },
-  goToDashboard() {
-    this.$router.push('/dashboard');
-  },
-  goToInbox() {
-    this.$router.push('/dashboard/inbox');
-  },
-},
-
 };
 </script>
 
@@ -107,46 +108,47 @@ export default {
 html, body {
   height: 100%;
   margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
-  background-color: #f9f9f9; /* Pastel background */
-  min-height: 100vh; /* Full-page height */
-  padding: 40px 20px;
+.container-fluid {
+  padding: 0;
+  height: 100%;
+  background-color: #f4f7fc; /* Soft pastel background */
+}
+
+.main-content {
+  padding: 30px;
+  margin-top: 20px;
 }
 
 /* Navbar Styling */
 .navbar {
-  background-color: #f0f4f8; /* Light pastel blue */
-  border-bottom: 2px solid #ddd;
-  padding: 10px 20px;
+  background-color: #e3f2fd; /* Light pastel blue */
+  padding: 15px 20px;
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #5c6bc0; /* Soft blue */
+  color: #3f51b5; /* Deep pastel blue */
 }
 
 .navbar-nav .nav-link {
-  color: #888;
+  color: #607d8b; /* Muted gray */
 }
 
 .navbar-nav .nav-link:hover {
-  color: #5c6bc0;
-}
-
-.navbar-nav .nav-item.active .nav-link {
-  color: #5c6bc0;
+  color: #3f51b5;
 }
 
 .navbar .btn-outline-danger {
-  color: #ff6f61; /* Soft coral color */
-  border-color: #ff6f61;
+  color: #f44336; /* Red */
+  border-color: #f44336;
 }
 
 .navbar .btn-outline-danger:hover {
-  background-color: #ff6f61;
-  color: #fff;
+  background-color: #f44336;
+  color: white;
 }
 
 .navbar-collapse {
@@ -166,42 +168,39 @@ html, body {
 
 /* Card Styling */
 .card {
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   background-color: #ffffff; /* Light pastel card background */
   border: none;
   margin-bottom: 30px;
 }
 
 .card-header {
-  background-color: #f4f9f9; /* Light pastel gray */
-  color: #333;
+  background-color: #f1f8ff; /* Pastel blue */
+  color: #3f51b5;
   font-weight: bold;
   font-size: 1.1rem;
 }
 
 .card-body {
-  padding: 20px;
-  background-color: #fafafa; /* Very light pastel background */
+  padding: 25px;
+  background-color: #f9f9f9; /* Very light pastel gray */
 }
 
 /* Table Styling */
 .table {
   width: 100%;
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
-.table-bordered th,
-.table-bordered td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f7fafc; /* Light pastel for odd rows */
 }
 
 .table th {
-  background-color: #f0f4f8; /* Soft pastel blue */
-  color: #5c6bc0;
+  background-color: #e3f2fd; /* Soft pastel blue */
+  color: #3f51b5;
   font-weight: bold;
 }
 
@@ -213,13 +212,13 @@ html, body {
 }
 
 .btn-primary {
-  background-color: #5c6bc0; /* Soft blue */
+  background-color: #3f51b5; /* Deep pastel blue */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #3e4f8d; /* Darker blue on hover */
+  background-color: #303f9f; /* Darker blue */
 }
 
 .btn-secondary {
@@ -245,7 +244,7 @@ html, body {
 /* Progress Bar Styling */
 .progress {
   height: 20px;
-  background-color: #f1f1f1;
+  background-color: #e8f5e9;
   border-radius: 10px;
 }
 
@@ -256,12 +255,7 @@ html, body {
   border-radius: 10px;
 }
 
-/* Make buttons smaller in the table */
-.card-body .btn {
-  font-size: 14px;
-}
-
-/* Responsive: ensure the navbar and container are properly aligned */
+/* Responsive: Navbar and layout adjustments */
 @media (max-width: 767px) {
   .navbar-collapse {
     flex-direction: column;
