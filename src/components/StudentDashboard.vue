@@ -94,6 +94,10 @@ export default {
     goToDashboard(){
       this.$router.push('/dashboard');
     }
+    goToInbox() {
+      this.$router.push('/dashboard/inbox');
+},
+
   },
 };
 </script>
