@@ -114,7 +114,7 @@ html, body {
 .container-fluid {
   padding: 0;
   height: 100%;
-  background: linear-gradient(135deg, #d1e8e2, #e3f2fd); /* Soft teal to pale blue gradient */
+  background-color: #f4f4f9; /* Light neutral background */
 }
 
 .main-content {
@@ -124,27 +124,27 @@ html, body {
 
 /* Navbar Styling */
 .navbar {
-  background: linear-gradient(90deg, #84d8a4, #7cb5c0); /* Soft green to blue gradient */
+  background-color: #4caf50; /* Solid green */
   padding: 15px 20px;
   border-radius: 10px;
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #2f4b5c; /* Dark teal */
+  color: white;
 }
 
 .navbar-nav .nav-link {
-  color: #52796f; /* Muted green */
+  color: white;
   font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ff6f61; /* Coral hover */
+  color: #ff6f61; /* Soft coral hover */
 }
 
 .navbar .btn-outline-danger {
-  color: #ff6f61; /* Soft coral */
+  color: #ff6f61; /* Coral button color */
   border-color: #ff6f61;
 }
 
@@ -183,8 +183,8 @@ html, body {
 }
 
 .card-header {
-  background: linear-gradient(90deg, #fce4ec, #e3f2fd); /* Pink to light blue gradient */
-  color: #2f4b5c;
+  background-color: #4caf50; /* Solid green header */
+  color: white;
   font-weight: bold;
   font-size: 1.1rem;
   border-radius: 10px 10px 0 0;
@@ -203,17 +203,17 @@ html, body {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f3f9f7; /* Soft pastel for odd rows */
+  background-color: #f9f9f9; /* Light gray for odd rows */
 }
 
 .table th {
-  background: #a8d5e2; /* Soft blue */
-  color: #2f4b5c;
+  background-color: #4caf50; /* Solid green header */
+  color: white;
   font-weight: bold;
 }
 
 .table td {
-  color: #52796f; /* Muted green */
+  color: #333; /* Dark gray for table text */
 }
 
 /* Button Styling Inside Table */
