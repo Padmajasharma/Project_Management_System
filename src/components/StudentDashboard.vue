@@ -93,7 +93,7 @@ export default {
     },
     goToDashboard(){
       this.$router.push('/dashboard');
-    }
+    },
     goToInbox() {
       this.$router.push('/dashboard/inbox');
 },
@@ -103,15 +103,132 @@ export default {
 </script>
 
 <style scoped>
+/* Container Styling */
 .container {
   background-color: #e0f7e9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #ddd;
 }
 
 .navbar-brand {
   font-weight: bold;
+  color: #007bff;
+}
+
+.nav-link {
+  color: #555;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.nav-item.active .nav-link {
+  color: #007bff;
+}
+
+/* Button Styling */
+.btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+/* Button Styling Inside Table */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border: none;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+/* Progress Bar Styling */
+.progress {
+  height: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
 }
 
 .progress-bar {
   background-color: #4caf50;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
 }
 </style>
+
