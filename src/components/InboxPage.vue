@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
     <!-- Enhanced Navbar Header -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">📘 IITM Student Project Tracker</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light pastel-header">
+      <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -15,7 +15,7 @@
             <a class="nav-link" @click="goToInbox">Inbox</a>
           </li>
         </ul>
-        <button class="btn btn-outline-light my-2 my-sm-0" @click="logout">Logout</button>
+        <button class="btn btn-outline-secondary ml-auto" @click="logout">Logout</button>
       </div>
     </nav>
 
@@ -28,6 +28,7 @@
           <li class="list-group-item" 
               v-for="(chat, index) in uniqueChats" 
               :key="index" 
+              :class="{ 'active-chat': chat.from === selectedChat }" 
               @click="selectChat(chat.from)">
             {{ chat.from }} - {{ chat.timestamp }}
           </li>
@@ -149,32 +150,32 @@ export default {
   flex-direction: column;
 }
 
-.navbar {
+.pastel-header {
+  background-color: #f0e6f6;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand {
-  font-weight: bold;
-  color: #fff !important;
+.navbar-brand, .nav-link {
+  font-weight: 500;
+  color: #5a5a5a !important;
 }
 
-.nav-link {
-  color: #ffffff !important;
-  font-weight: 500;
+.nav-link:hover {
+  color: #6d6d6d !important;
 }
 
 .chat-wrapper {
   display: flex;
   height: calc(100vh - 60px);
-  background-color: #f4f6f8;
+  background-color: #fafafa;
 }
 
 .chat-list {
   width: 30%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #ddd;
-  background-color: #f9f9f9;
+  border-right: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
   padding-bottom: 10px;
 }
 
@@ -182,8 +183,8 @@ export default {
   padding: 15px;
   font-weight: bold;
   text-align: center;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
+  background-color: #e6f0fa;
+  color: #555;
 }
 
 .chat-contacts {
@@ -193,8 +194,17 @@ export default {
 
 .compose-button {
   margin-top: auto;
-  width: 100%;
-  border-radius: 0;
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 15px;
+  font-weight: bold;
+  background-color: #e6f7ff;
+  color: #007bff;
+}
+
+.active-chat {
+  background-color: #d0ebff;
+  color: #0056b3;
   font-weight: bold;
 }
 
@@ -203,12 +213,14 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-left: 1%;
 }
 
 .chat-header {
   font-weight: bold;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
   color: #333;
 }
 
@@ -218,7 +230,6 @@ export default {
   padding: 15px;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .message-container {
@@ -229,7 +240,7 @@ export default {
 
 .message-sent {
   align-self: flex-end;
-  background-color: #cce5ff;
+  background-color: #d4f0fc;
   padding: 10px 15px;
   border-radius: 15px 15px 0 15px;
   max-width: 60%;
@@ -238,7 +249,7 @@ export default {
 
 .message-received {
   align-self: flex-start;
-  background-color: #e2e3e5;
+  background-color: #f3f3f3;
   padding: 10px 15px;
   border-radius: 15px 15px 15px 0;
   max-width: 60%;
