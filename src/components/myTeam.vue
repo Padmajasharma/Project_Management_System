@@ -1,25 +1,25 @@
 <template>
   <div class="container-fluid min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm rounded">
-      <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary shadow-lg">
+      <a class="navbar-brand text-white font-weight-bold" href="#">IITM Student Project Tracker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" @click="goToDashboard">Dashboard</a>
+            <a class="nav-link text-white" @click="goToDashboard">Dashboard</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" @click="goToMyTeam">My Team</a>
+            <a class="nav-link text-white" @click="goToMyTeam">My Team</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" @click="goToInbox">Inbox</a>
+            <a class="nav-link text-white" @click="goToInbox">Inbox</a>
           </li>
         </ul>
-        <div class="d-flex align-items-center">
-          <button class="btn btn-outline-danger my-2 my-sm-0 mr-3 rounded-pill" @click="logout">LOGOUT</button>
-          <div class="notification-bell position-relative">
-            <i class="fas fa-bell"></i>
-            <span class="badge badge-danger position-absolute">5</span>
-          </div>
+        <!-- Logout Button -->
+        <div class="ml-auto">
+          <button class="btn btn-outline-light my-2 my-sm-0 rounded-pill" @click="logout">LOGOUT</button>
         </div>
       </div>
     </nav>
@@ -134,7 +134,7 @@ export default {
 
 .navbar {
   border-radius: 10px;
-  background-color: #4dabf7; /* Light blue */
+  background-color: #007bff; /* Blue navbar */
 }
 
 .navbar-brand {
@@ -149,6 +149,10 @@ export default {
 
 .navbar-nav .nav-link:hover {
   color: #ffcc00; /* Hover effect */
+}
+
+.navbar-toggler-icon {
+  background-color: white;
 }
 
 .notification-bell {
@@ -171,7 +175,7 @@ export default {
 }
 
 .card-header {
-  background-color: #4dabf7; /* Matching with navbar */
+  background-color: #007bff; /* Blue header */
   color: white;
   font-weight: bold;
   border-radius: 10px 10px 0 0;
@@ -196,7 +200,7 @@ export default {
 }
 
 .table th {
-  background-color: #4dabf7;
+  background-color: #007bff;
   color: white;
 }
 
@@ -228,12 +232,12 @@ export default {
 }
 
 .btn-primary {
-  background-color: #4dabf7;
+  background-color: #007bff;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #3b9ae2;
+  background-color: #0069d9;
 }
 
 /* For rounded-pill buttons */
