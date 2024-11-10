@@ -20,6 +20,7 @@ const routes = [
   { path: '/', component: Login }, // Login page at root
   { path: '/dashboard', component: Dashboard },
   { path: '/dashboard/myteam', component: myteam }, // Dashboard route (if created)
+  { path: '/dashboard/inbox', component: inboxPage},
   {
     path: "/instructor/:id",
     name: "instructordashboard",
