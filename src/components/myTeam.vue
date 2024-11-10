@@ -132,27 +132,50 @@ export default {
   padding: 20px;
 }
 
+/* Navbar Styling */
 .navbar {
+  background-color: #85c1e9; /* Lighter blue */
+  padding: 15px 20px;
   border-radius: 10px;
-  background-color: #007bff; /* Blue navbar */
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: white;
+  color: #ffffff; /* White text */
 }
 
 .navbar-nav .nav-link {
-  color: white;
+  color: #ffffff; /* White text for nav links */
   font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffcc00; /* Hover effect */
+  color: #ffcc00; /* Bright yellow for hover */
 }
 
-.navbar-toggler-icon {
-  background-color: white;
+.navbar .btn-outline-light {
+  color: #ffffff; /* White text */
+  border-color: #ffffff; /* White border */
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #007bff;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar-nav .nav-item {
+  padding: 0 10px;
 }
 
 .notification-bell {
