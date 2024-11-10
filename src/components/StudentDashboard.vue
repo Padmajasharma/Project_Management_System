@@ -114,7 +114,7 @@ html, body {
 .container-fluid {
   padding: 0;
   height: 100%;
-  background-color: #f4f4f9; /* Light neutral background */
+  background: linear-gradient(135deg, #f0f8ff, #e8f5f5); /* Soft light blue to pastel green gradient */
 }
 
 .main-content {
@@ -131,25 +131,25 @@ html, body {
 
 .navbar-brand {
   font-weight: bold;
-  color: white;
+  color: #ffffff; /* White text */
 }
 
 .navbar-nav .nav-link {
-  color: white;
+  color: #ffffff; /* White text for nav links */
   font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ff6f61; /* Soft coral hover */
+  color: #ffd54f; /* Warm yellow for hover */
 }
 
 .navbar .btn-outline-danger {
-  color: #ff6f61; /* Coral button color */
-  border-color: #ff6f61;
+  color: #ffd54f; /* Warm yellow */
+  border-color: #ffd54f;
 }
 
 .navbar .btn-outline-danger:hover {
-  background-color: #ff6f61;
+  background-color: #ffd54f;
   color: white;
 }
 
@@ -183,7 +183,7 @@ html, body {
 }
 
 .card-header {
-  background-color: #4caf50; /* Solid green header */
+  background-color: #81c784; /* Soft green */
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
@@ -203,17 +203,17 @@ html, body {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9; /* Light gray for odd rows */
+  background-color: #f9fbe7; /* Soft pastel for odd rows */
 }
 
 .table th {
-  background-color: #4caf50; /* Solid green header */
+  background-color: #81c784; /* Soft green */
   color: white;
   font-weight: bold;
 }
 
 .table td {
-  color: #333; /* Dark gray for table text */
+  color: #333; /* Dark text */
 }
 
 /* Button Styling Inside Table */
@@ -229,33 +229,33 @@ html, body {
 }
 
 .btn-primary {
-  background-color: #66c7d9; /* Soft turquoise */
+  background-color: #4caf50; /* Soft green */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #4da6b0; /* Slightly darker turquoise */
+  background-color: #45a049; /* Slightly darker green */
 }
 
 .btn-secondary {
-  background-color: #f9e79f; /* Soft yellow */
+  background-color: #ffcc80; /* Soft peach */
   border: none;
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #f1d567; /* Darker yellow */
+  background-color: #ffb74d; /* Darker peach */
 }
 
 .btn-warning {
-  background-color: #ffcc80; /* Soft yellow-orange */
+  background-color: #ffb74d; /* Soft orange */
   border: none;
   color: white;
 }
 
 .btn-warning:hover {
-  background-color: #ffb74d; /* Darker yellow-orange */
+  background-color: #ff9800; /* Darker orange */
 }
 
 /* Progress Bar Styling */
@@ -266,7 +266,7 @@ html, body {
 }
 
 .progress-bar {
-  background-color: #81c784; /* Soft green */
+  background-color: #66bb6a; /* Soft green */
   text-align: center;
   color: white;
   border-radius: 10px;
