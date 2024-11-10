@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <nav class="navbar navbar-expand-lg navbar-light mb-4">
       <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
@@ -114,7 +114,7 @@ html, body {
 .container-fluid {
   padding: 0;
   height: 100%;
-  background-color: #f4f7fc; /* Soft pastel background */
+  background-color: #f3f4f6; /* Soft off-white pastel */
 }
 
 .main-content {
@@ -124,30 +124,30 @@ html, body {
 
 /* Navbar Styling */
 .navbar {
-  background-color: #e3f2fd; /* Light pastel blue */
+  background-color: #f8f9fa; /* Light warm grey */
   padding: 15px 20px;
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #3f51b5; /* Deep pastel blue */
+  color: #3b7ea1; /* Soft teal blue */
 }
 
 .navbar-nav .nav-link {
-  color: #607d8b; /* Muted gray */
+  color: #7a9a92; /* Muted sage green */
 }
 
 .navbar-nav .nav-link:hover {
-  color: #3f51b5;
+  color: #3b7ea1;
 }
 
 .navbar .btn-outline-danger {
-  color: #f44336; /* Red */
-  border-color: #f44336;
+  color: #e57373; /* Soft red */
+  border-color: #e57373;
 }
 
 .navbar .btn-outline-danger:hover {
-  background-color: #f44336;
+  background-color: #e57373;
   color: white;
 }
 
@@ -169,15 +169,15 @@ html, body {
 /* Card Styling */
 .card {
   border-radius: 12px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff; /* Light pastel card background */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff; /* White background for cards */
   border: none;
   margin-bottom: 30px;
 }
 
 .card-header {
-  background-color: #f1f8ff; /* Pastel blue */
-  color: #3f51b5;
+  background-color: #ebf2f2; /* Light pastel teal */
+  color: #3b7ea1;
   font-weight: bold;
   font-size: 1.1rem;
 }
@@ -195,12 +195,12 @@ html, body {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f7fafc; /* Light pastel for odd rows */
+  background-color: #f7f7f7; /* Very soft pastel for odd rows */
 }
 
 .table th {
-  background-color: #e3f2fd; /* Soft pastel blue */
-  color: #3f51b5;
+  background-color: #dbe9e3; /* Soft mint green */
+  color: #3b7ea1;
   font-weight: bold;
 }
 
@@ -212,23 +212,23 @@ html, body {
 }
 
 .btn-primary {
-  background-color: #3f51b5; /* Deep pastel blue */
+  background-color: #6fa3e3; /* Soft sky blue */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #303f9f; /* Darker blue */
+  background-color: #5b92d3; /* Slightly darker sky blue */
 }
 
 .btn-secondary {
-  background-color: #b0bec5; /* Light grayish blue */
+  background-color: #a8d6d1; /* Light mint green */
   border: none;
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #90a4ae; /* Slightly darker on hover */
+  background-color: #88b8b3; /* Slightly darker mint green */
 }
 
 .btn-warning {
@@ -238,18 +238,18 @@ html, body {
 }
 
 .btn-warning:hover {
-  background-color: #ffa726; /* Slightly darker on hover */
+  background-color: #ff9e3f; /* Slightly darker orange */
 }
 
 /* Progress Bar Styling */
 .progress {
   height: 20px;
-  background-color: #e8f5e9;
+  background-color: #eaf2f1; /* Light pastel mint */
   border-radius: 10px;
 }
 
 .progress-bar {
-  background-color: #4caf50; /* Greenish pastel */
+  background-color: #81c784; /* Soft green */
   text-align: center;
   color: white;
   border-radius: 10px;
