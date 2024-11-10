@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container-fluid min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm rounded">
       <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
       <div class="collapse navbar-collapse">
@@ -30,13 +30,22 @@
         Team Details
       </div>
       <div class="card-body">
-        <ul class="list-group">
-          <li class="list-group-item" v-for="member in teamMembers" :key="member.name">
-            <strong>Name:</strong> {{ member.name }},
-            <strong>Email-ID:</strong> {{ member.email }},
-            <strong>Meetings Attended:</strong> {{ member.meetingsAttended }}
-          </li>
-        </ul>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Email-ID</th>
+              <th>Meetings Attended</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="member in teamMembers" :key="member.name">
+              <td>{{ member.name }}</td>
+              <td>{{ member.email }}</td>
+              <td>{{ member.meetingsAttended }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -118,9 +127,9 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container-fluid {
   background-color: #e0f7e9; /* Soft mint green */
-  padding: 0 20px;
+  padding: 20px;
 }
 
 .navbar {
@@ -156,7 +165,7 @@ export default {
 
 .card {
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
 }
@@ -172,25 +181,18 @@ export default {
   padding: 20px;
 }
 
-.list-group-item {
-  font-size: 16px;
-  background-color: #f7fafc;
-  border: none;
-  border-bottom: 1px solid #f0f0f0;
-}
-
 .table {
   width: 100%;
-  margin-top: 15px;
+}
+
+.table th, .table td {
+  text-align: center;
+  padding: 12px;
+  vertical-align: middle;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f8f9fa;
-}
-
-.table th,
-.table td {
-  vertical-align: middle;
 }
 
 .table th {
