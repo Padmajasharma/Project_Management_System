@@ -76,29 +76,29 @@ export default {
     };
   },
   methods: {
-    logout() {
-      this.$router.push('/');
-    },
-    upload(submission) {
-      alert(Upload clicked for ${submission.title});
-    },
-    view(submission) {
-      alert(View clicked for ${submission.title});
-    },
-    review(submission) {
-      alert(Review clicked for ${submission.title});
-    },
-    goToMyTeam(){
-      this.$router.push('/dashboard/myteam');
-    },
-    goToDashboard(){
-      this.$router.push('/dashboard');
-    },
-    goToInbox() {
-      this.$router.push('/dashboard/inbox');
+  logout() {
+    this.$router.push('/');
+  },
+  upload(submission) {
+    alert(`Upload clicked for ${submission.title}`);
+  },
+  view(submission) {
+    alert(`View clicked for ${submission.title}`);
+  },
+  review(submission) {
+    alert(`Review clicked for ${submission.title}`);
+  },
+  goToMyTeam() {
+    this.$router.push('/dashboard/myteam');
+  },
+  goToDashboard() {
+    this.$router.push('/dashboard');
+  },
+  goToInbox() {
+    this.$router.push('/dashboard/inbox');
+  },
 },
 
-  },
 };
 </script>
 
