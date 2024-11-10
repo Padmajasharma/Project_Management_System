@@ -14,16 +14,16 @@
             <a class="nav-link" @click="goToInbox">Inbox</a>
           </li>
         </ul>
-        <button class="btn btn-outline-danger my-2 my-sm-0 ml-auto" @click="logout">Logout</button>
+        <button class="btn btn-outline-dark my-2 my-sm-0 ml-auto" @click="logout">Logout</button>
       </div>
     </nav>
     <div class="main-content">
-      <div class="card mb-4 shadow-lg">
+      <div class="card mb-4 shadow-sm">
         <div class="card-header">
           Project Submissions
         </div>
         <div class="card-body">
-          <table class="table table-striped">
+          <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Date</th>
@@ -49,7 +49,7 @@
           </table>
         </div>
       </div>
-      <div class="card shadow-lg">
+      <div class="card shadow-sm">
         <div class="card-header">
           Progress
         </div>
@@ -114,7 +114,7 @@ html, body {
 .container-fluid {
   padding: 0;
   height: 100%;
-  background: linear-gradient(135deg, #f9d4d4, #d4e9f9); /* Soft gradient background */
+  background-color: #f5f5f5; /* Light neutral background */
 }
 
 .main-content {
@@ -124,75 +124,55 @@ html, body {
 
 /* Navbar Styling */
 .navbar {
-  background: linear-gradient(90deg, #f9a8d4, #d1d1f7); /* Soft pink to lavender gradient */
+  background-color: #ffffff; /* Clean white background */
   padding: 15px 20px;
-  border-radius: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #5f4b8b; /* Soft purple */
+  color: #333; /* Dark grey for better contrast */
 }
 
 .navbar-nav .nav-link {
-  color: #3b7ea1; /* Soft teal */
+  color: #555; /* Soft grey for nav items */
   font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ff80ab; /* Pink hover */
+  color: #007bff; /* Soft blue on hover */
 }
 
-.navbar .btn-outline-danger {
-  color: #f28b82; /* Light coral */
-  border-color: #f28b82;
+.navbar .btn-outline-dark {
+  color: #333;
+  border-color: #333;
 }
 
-.navbar .btn-outline-danger:hover {
-  background-color: #f28b82;
+.navbar .btn-outline-dark:hover {
+  background-color: #333;
   color: white;
-}
-
-.navbar-collapse {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar-nav {
-  display: flex;
-  gap: 15px;
-}
-
-.navbar-nav .nav-item {
-  padding: 0 10px;
 }
 
 /* Card Styling */
 .card {
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   border: none;
   margin-bottom: 30px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.card:hover {
-  transform: translateY(-10px); /* Hover effect to lift the card */
 }
 
 .card-header {
-  background: linear-gradient(90deg, #f0d4fc, #d0f0c0); /* Pastel pink and green gradient */
-  color: #5f4b8b;
+  background-color: #f1f1f1; /* Very light grey */
+  color: #333; /* Dark grey */
   font-weight: bold;
   font-size: 1.1rem;
-  border-radius: 10px 10px 0 0;
 }
 
 .card-body {
   padding: 25px;
-  background-color: #fafafa;
+  background-color: #fafafa; /* Light soft background */
 }
 
 /* Table Styling */
@@ -202,18 +182,23 @@ html, body {
   background-color: #ffffff;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9; /* Soft pastel for odd rows */
+.table-bordered {
+  border: 1px solid #e0e0e0;
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
 }
 
 .table th {
-  background: #e1bee7; /* Soft lavender */
-  color: #5f4b8b;
+  background-color: #f8f9fa; /* Very light grey */
+  color: #333; /* Dark grey */
   font-weight: bold;
 }
 
 .table td {
-  color: #3b7ea1; /* Soft teal */
+  color: #555; /* Soft grey text */
 }
 
 /* Button Styling Inside Table */
@@ -225,48 +210,48 @@ html, body {
 }
 
 .btn-sm:hover {
-  transform: scale(1.1); /* Slight scale on hover */
+  transform: scale(1.05); /* Slight scale on hover */
 }
 
 .btn-primary {
-  background-color: #5fa3e1; /* Soft sky blue */
+  background-color: #007bff; /* Soft blue */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #4a92d1; /* Slightly darker blue */
+  background-color: #0056b3; /* Darker blue */
 }
 
 .btn-secondary {
-  background-color: #a8e6cf; /* Light mint */
+  background-color: #6c757d; /* Soft grey */
   border: none;
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #80c4a6; /* Darker mint */
+  background-color: #5a6268; /* Darker grey */
 }
 
 .btn-warning {
-  background-color: #ffcc80; /* Soft yellow-orange */
+  background-color: #ffc107; /* Soft yellow */
   border: none;
   color: white;
 }
 
 .btn-warning:hover {
-  background-color: #ffb74d; /* Darker yellow-orange */
+  background-color: #e0a800; /* Darker yellow */
 }
 
 /* Progress Bar Styling */
 .progress {
   height: 20px;
-  background-color: #f3e5f5; /* Light pastel pink */
+  background-color: #e9ecef; /* Light grey */
   border-radius: 10px;
 }
 
 .progress-bar {
-  background-color: #81c784; /* Soft green */
+  background-color: #28a745; /* Green for progress */
   text-align: center;
   color: white;
   border-radius: 10px;
