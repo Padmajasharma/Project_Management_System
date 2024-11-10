@@ -1,4 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light pastel-header">
+<template>
+  <div class="main-container">
+    <!-- Enhanced Navbar Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light pastel-header">
   <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
   <div class="collapse navbar-collapse d-flex justify-content-between w-100">
     <ul class="navbar-nav mr-auto">
@@ -15,6 +18,7 @@
     <button class="btn btn-outline-secondary" @click="logout">Logout</button>
   </div>
 </nav>
+
 
     <!-- Chat Container -->
     <div class="chat-wrapper">
