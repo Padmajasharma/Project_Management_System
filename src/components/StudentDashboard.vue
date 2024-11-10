@@ -14,7 +14,7 @@
             <a class="nav-link" @click="goToInbox">Inbox</a>
           </li>
         </ul>
-        <button class="btn btn-outline-danger my-2 my-sm-0 ml-auto" @click="logout">Logout</button>
+        <button class="btn btn-outline-light my-2 my-sm-0 ml-auto" @click="logout">Logout</button>
       </div>
     </nav>
     <div class="main-content">
@@ -38,7 +38,9 @@
                 <td>{{ submission.date }}</td>
                 <td>{{ submission.title }}</td>
                 <td>{{ submission.status }}</td>
-                <td>{{ submission.feedback }}</td>
+                <td>
+                  <span v-for="n in 5" :key="n" class="star" :class="n <= submission.stars ? 'filled' : ''">★</span>
+                </td>
                 <td>
                   <button class="btn btn-primary btn-sm" @click="upload(submission)">Upload</button>
                   <button class="btn btn-secondary btn-sm" @click="view(submission)">View</button>
@@ -70,9 +72,9 @@ export default {
   data() {
     return {
       submissions: [
-        { id: 1, date: '1/9/2024', title: 'Milestone 1', status: 'Completed', feedback: '⭐⭐⭐⭐⭐' },
-        { id: 2, date: '15/9/2024', title: 'Milestone 2', status: 'Pending', feedback: '-' },
-        { id: 3, date: '30/9/2024', title: 'Milestone 3', status: 'Pending', feedback: '-' },
+        { id: 1, date: '1/9/2024', title: 'Milestone 1', status: 'Completed', stars: 5 },
+        { id: 2, date: '15/9/2024', title: 'Milestone 2', status: 'Pending', stars: 3 },
+        { id: 3, date: '30/9/2024', title: 'Milestone 3', status: 'Pending', stars: 4 },
       ],
       progress: 30, // Hardcoded progress value
     };
@@ -124,7 +126,7 @@ html, body {
 
 /* Navbar Styling */
 .navbar {
-  background-color: #4caf50; /* Solid green */
+  background-color: #007bff; /* Solid blue */
   padding: 15px 20px;
   border-radius: 10px;
 }
@@ -140,17 +142,17 @@ html, body {
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffd54f; /* Warm yellow for hover */
+  color: #ffcc00; /* Bright yellow for hover */
 }
 
-.navbar .btn-outline-danger {
-  color: #ffd54f; /* Warm yellow */
-  border-color: #ffd54f;
+.navbar .btn-outline-light {
+  color: #ffffff; /* White text */
+  border-color: #ffffff; /* White border */
 }
 
-.navbar .btn-outline-danger:hover {
-  background-color: #ffd54f;
-  color: white;
+.navbar .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #007bff;
 }
 
 .navbar-collapse {
@@ -183,7 +185,7 @@ html, body {
 }
 
 .card-header {
-  background-color: #81c784; /* Soft green */
+  background-color: #007bff; /* Solid blue */
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
@@ -207,13 +209,23 @@ html, body {
 }
 
 .table th {
-  background-color: #81c784; /* Soft green */
+  background-color: #007bff; /* Solid blue */
   color: white;
   font-weight: bold;
 }
 
 .table td {
   color: #333; /* Dark text */
+}
+
+/* Star Rating Styling */
+.star {
+  font-size: 20px;
+  color: #bdbdbd; /* Light grey by default */
+}
+
+.star.filled {
+  color: #000000; /* Black for filled stars */
 }
 
 /* Button Styling Inside Table */
@@ -229,33 +241,33 @@ html, body {
 }
 
 .btn-primary {
-  background-color: #4caf50; /* Soft green */
+  background-color: #007bff; /* Solid blue */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #45a049; /* Slightly darker green */
+  background-color: #0056b3; /* Darker blue */
 }
 
 .btn-secondary {
-  background-color: #ffcc80; /* Soft peach */
+  background-color: #ffcc00; /* Bright yellow */
   border: none;
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #ffb74d; /* Darker peach */
+  background-color: #ffb300; /* Darker yellow */
 }
 
 .btn-warning {
-  background-color: #ffb74d; /* Soft orange */
+  background-color: #ff9800; /* Orange */
   border: none;
   color: white;
 }
 
 .btn-warning:hover {
-  background-color: #ff9800; /* Darker orange */
+  background-color: #fb8c00; /* Darker orange */
 }
 
 /* Progress Bar Styling */
