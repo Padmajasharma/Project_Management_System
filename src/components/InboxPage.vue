@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
-    <!-- Navbar Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
+    <!-- Enhanced Navbar Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">📘 IITM Student Project Tracker</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -15,7 +15,7 @@
             <a class="nav-link" @click="goToInbox">Inbox</a>
           </li>
         </ul>
-        <button class="btn btn-outline-danger my-2 my-sm-0" @click="logout">Logout</button>
+        <button class="btn btn-outline-light my-2 my-sm-0" @click="logout">Logout</button>
       </div>
     </nav>
 
@@ -24,21 +24,21 @@
       <!-- Chat List on the left -->
       <div class="chat-list">
         <h5 class="chat-list-header">Messages</h5>
-        <ul class="list-group">
+        <ul class="list-group chat-contacts">
           <li class="list-group-item" 
               v-for="(chat, index) in uniqueChats" 
               :key="index" 
               @click="selectChat(chat.from)">
-            from: {{ chat.from }} - {{ chat.timestamp }}
+            {{ chat.from }} - {{ chat.timestamp }}
           </li>
         </ul>
+        <button class="btn btn-primary compose-button" @click="startNewChat">Compose</button>
       </div>
 
       <!-- Chat Box on the right -->
       <div class="chat-container" v-if="selectedChat">
-        <div class="chat-header d-flex justify-content-between align-items-center">
-          <h4 class="m-0">Chat with {{ selectedChat }}</h4>
-          <button class="btn btn-primary" @click="startNewChat">Compose</button>
+        <div class="chat-header">
+          <h4>Chat with {{ selectedChat }}</h4>
         </div>
 
         <div class="chat-box" ref="chatBox">
@@ -149,28 +149,53 @@ export default {
   flex-direction: column;
 }
 
+.navbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .navbar-brand {
   font-weight: bold;
+  color: #fff !important;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
 }
 
 .chat-wrapper {
   display: flex;
   height: calc(100vh - 60px);
+  background-color: #f4f6f8;
 }
 
 .chat-list {
   width: 30%;
-  border-right: 1px solid #e0e0e0;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ddd;
   background-color: #f9f9f9;
+  padding-bottom: 10px;
 }
 
 .chat-list-header {
-  padding: 10px;
+  padding: 15px;
   font-weight: bold;
   text-align: center;
   background-color: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-contacts {
+  overflow-y: auto;
+  max-height: calc(100vh - 150px);
+}
+
+.compose-button {
+  margin-top: auto;
+  width: 100%;
+  border-radius: 0;
+  font-weight: bold;
 }
 
 .chat-container {
@@ -181,9 +206,10 @@ export default {
 }
 
 .chat-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
 }
 
 .chat-box {
@@ -191,8 +217,8 @@ export default {
   overflow-y: auto;
   padding: 15px;
   background-color: #ffffff;
-  border: 1px solid #e0e0e0;
   border-radius: 8px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .message-container {
@@ -203,7 +229,7 @@ export default {
 
 .message-sent {
   align-self: flex-end;
-  background-color: #dcf8c6;
+  background-color: #cce5ff;
   padding: 10px 15px;
   border-radius: 15px 15px 0 15px;
   max-width: 60%;
@@ -212,7 +238,7 @@ export default {
 
 .message-received {
   align-self: flex-start;
-  background-color: #f1f1f1;
+  background-color: #e2e3e5;
   padding: 10px 15px;
   border-radius: 15px 15px 15px 0;
   max-width: 60%;
@@ -232,7 +258,7 @@ export default {
 }
 
 .input-area {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #ddd;
   padding-top: 10px;
 }
 
