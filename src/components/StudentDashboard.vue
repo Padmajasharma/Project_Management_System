@@ -114,7 +114,7 @@ html, body {
 .container-fluid {
   padding: 0;
   height: 100%;
-  background: linear-gradient(135deg, #e3f2fd, #c8e6c9); /* Soft blue to mint green gradient */
+  background: linear-gradient(135deg, #d1e8e2, #e3f2fd); /* Soft teal to pale blue gradient */
 }
 
 .main-content {
@@ -124,32 +124,32 @@ html, body {
 
 /* Navbar Styling */
 .navbar {
-  background: linear-gradient(90deg, #ffd54f, #ff8a80); /* Yellow to soft red gradient */
+  background: linear-gradient(90deg, #84d8a4, #7cb5c0); /* Soft green to blue gradient */
   padding: 15px 20px;
   border-radius: 10px;
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #0d47a1; /* Dark blue */
+  color: #2f4b5c; /* Dark teal */
 }
 
 .navbar-nav .nav-link {
-  color: #00796b; /* Teal */
+  color: #52796f; /* Muted green */
   font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #d32f2f; /* Red hover */
+  color: #ff6f61; /* Coral hover */
 }
 
 .navbar .btn-outline-danger {
-  color: #f44336; /* Red */
-  border-color: #f44336;
+  color: #ff6f61; /* Soft coral */
+  border-color: #ff6f61;
 }
 
 .navbar .btn-outline-danger:hover {
-  background-color: #f44336;
+  background-color: #ff6f61;
   color: white;
 }
 
@@ -183,8 +183,8 @@ html, body {
 }
 
 .card-header {
-  background: linear-gradient(90deg, #c8e6c9, #ffcc80); /* Mint green to light yellow */
-  color: #0277bd; /* Darker blue */
+  background: linear-gradient(90deg, #fce4ec, #e3f2fd); /* Pink to light blue gradient */
+  color: #2f4b5c;
   font-weight: bold;
   font-size: 1.1rem;
   border-radius: 10px 10px 0 0;
@@ -203,17 +203,17 @@ html, body {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f1f8e9; /* Soft pale green */
+  background-color: #f3f9f7; /* Soft pastel for odd rows */
 }
 
 .table th {
-  background: #ffeb3b; /* Soft yellow */
-  color: #0d47a1;
+  background: #a8d5e2; /* Soft blue */
+  color: #2f4b5c;
   font-weight: bold;
 }
 
 .table td {
-  color: #004d40; /* Dark teal */
+  color: #52796f; /* Muted green */
 }
 
 /* Button Styling Inside Table */
@@ -229,23 +229,23 @@ html, body {
 }
 
 .btn-primary {
-  background-color: #0288d1; /* Bright blue */
+  background-color: #66c7d9; /* Soft turquoise */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #0277bd; /* Darker blue */
+  background-color: #4da6b0; /* Slightly darker turquoise */
 }
 
 .btn-secondary {
-  background-color: #80cbc4; /* Soft mint */
+  background-color: #f9e79f; /* Soft yellow */
   border: none;
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #4db6ac; /* Darker mint */
+  background-color: #f1d567; /* Darker yellow */
 }
 
 .btn-warning {
@@ -261,12 +261,12 @@ html, body {
 /* Progress Bar Styling */
 .progress {
   height: 20px;
-  background-color: #f1f8e9; /* Light pastel green */
+  background-color: #e8f5e9; /* Light pastel green */
   border-radius: 10px;
 }
 
 .progress-bar {
-  background-color: #388e3c; /* Dark green */
+  background-color: #81c784; /* Soft green */
   text-align: center;
   color: white;
   border-radius: 10px;
