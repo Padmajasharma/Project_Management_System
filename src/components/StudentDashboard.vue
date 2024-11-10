@@ -116,7 +116,7 @@ html, body {
 .container-fluid {
   padding: 0;
   height: 100%;
-  background: linear-gradient(135deg, #f0f8ff, #e8f5f5); /* Soft light blue to pastel green gradient */
+  background: linear-gradient(135deg, #e0f7fa, #ffffff); /* Soft light cyan to white gradient */
 }
 
 .main-content {
@@ -126,7 +126,7 @@ html, body {
 
 /* Navbar Styling */
 .navbar {
-  background-color: #007bff; /* Solid blue */
+  background-color: #85c1e9; /* Lighter blue */
   padding: 15px 20px;
   border-radius: 10px;
 }
@@ -185,7 +185,7 @@ html, body {
 }
 
 .card-header {
-  background-color: #007bff; /* Solid blue */
+  background-color: #85c1e9; /* Lighter blue */
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
@@ -205,11 +205,11 @@ html, body {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9fbe7; /* Soft pastel for odd rows */
+  background-color: #f3f9f7; /* Soft pastel for odd rows */
 }
 
 .table th {
-  background-color: #007bff; /* Solid blue */
+  background-color: #85c1e9; /* Lighter blue */
   color: white;
   font-weight: bold;
 }
@@ -241,13 +241,13 @@ html, body {
 }
 
 .btn-primary {
-  background-color: #007bff; /* Solid blue */
+  background-color: #85c1e9; /* Lighter blue */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3; /* Darker blue */
+  background-color: #4da6d6; /* Slightly darker blue */
 }
 
 .btn-secondary {
