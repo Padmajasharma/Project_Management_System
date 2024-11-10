@@ -153,6 +153,7 @@ export default {
 .pastel-header {
   background-color: #f0e6f6;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width:100%;
 }
 
 .navbar-brand, .nav-link {
