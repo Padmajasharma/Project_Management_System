@@ -1,7 +1,7 @@
 <template>
-  <div class="container mt-5">
+  <div class="main-container">
     <!-- Navbar Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
@@ -20,35 +20,47 @@
     </nav>
 
     <!-- Chat Container -->
-    <div class="container p-3 chat-container">
-      <div class="chat-header d-flex justify-content-between align-items-center mb-3">
-        <h4 class="m-0">Inbox Chat</h4>
-        <button class="btn btn-primary" @click="startNewChat">Compose</button>
+    <div class="chat-wrapper">
+      <!-- Chat List on the left -->
+      <div class="chat-list">
+        <h5 class="chat-list-header">Messages</h5>
+        <ul class="list-group">
+          <li class="list-group-item" v-for="message in messages" :key="message.timestamp" @click="selectMessage(message)">
+            {{ message.from }} - {{ message.timestamp }}
+          </li>
+        </ul>
       </div>
 
-      <!-- Chat messages area -->
-      <div class="chat-box mb-3" ref="chatBox">
-        <div v-for="message in messages" :key="message.timestamp" class="message-container">
-          <div :class="{'message-sent': message.isMine, 'message-received': !message.isMine}">
-            <p class="message-content">{{ message.content }}</p>
-            <div class="message-info">
-              <span class="message-from">{{ message.from }}</span>
-              <span class="message-timestamp">{{ message.timestamp }}</span>
+      <!-- Chat Box on the right -->
+      <div class="chat-container">
+        <div class="chat-header d-flex justify-content-between align-items-center">
+          <h4 class="m-0">Chat with {{ selectedMessage?.from || 'Select a Chat' }}</h4>
+          <button class="btn btn-primary" @click="startNewChat">Compose</button>
+        </div>
+
+        <div class="chat-box" ref="chatBox">
+          <div v-for="msg in selectedMessages" :key="msg.timestamp" class="message-container">
+            <div :class="{'message-sent': msg.isMine, 'message-received': !msg.isMine}">
+              <p class="message-content">{{ msg.content }}</p>
+              <div class="message-info">
+                <span class="message-from">{{ msg.from }}</span>
+                <span class="message-timestamp">{{ msg.timestamp }}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Message input area -->
-      <div class="input-area d-flex">
-        <input 
-          type="text" 
-          v-model="newMessage" 
-          class="form-control me-2" 
-          placeholder="Write a message..."
-          @keyup.enter="sendMessage"
-        />
-        <button class="btn btn-success" @click="sendMessage">Send</button>
+        <!-- Message input area -->
+        <div class="input-area d-flex">
+          <input 
+            type="text" 
+            v-model="newMessage" 
+            class="form-control me-2" 
+            placeholder="Write a message..."
+            @keyup.enter="sendMessage"
+          />
+          <button class="btn btn-success" @click="sendMessage">Send</button>
+        </div>
       </div>
     </div>
   </div>
@@ -63,6 +75,8 @@ export default {
         { from: 'Me', content: 'I wanted to discuss the project details.', timestamp: '10:05 AM', isMine: true },
         { from: 'John Doe', content: 'Sure, let’s go over it.', timestamp: '10:07 AM', isMine: false },
       ],
+      selectedMessages: [],
+      selectedMessage: null,
       newMessage: '',
     };
   },
@@ -82,9 +96,13 @@ export default {
     startNewChat() {
       alert('Start a new chat');
     },
+    selectMessage(message) {
+      this.selectedMessage = message;
+      this.selectedMessages = this.messages.filter(msg => msg.from === message.from);
+    },
     sendMessage() {
-      if (this.newMessage.trim()) {
-        this.messages.push({
+      if (this.newMessage.trim() && this.selectedMessage) {
+        this.selectedMessages.push({
           from: 'Me',
           content: this.newMessage,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -107,29 +125,51 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 600px;
-  background-color: #f5f7fa;
-  border-radius: 8px;
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar-brand {
   font-weight: bold;
 }
 
-.chat-container {
+.chat-wrapper {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.chat-list {
+  width: 30%;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+.chat-list-header {
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
   background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.chat-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .chat-header {
-  font-weight: bold;
-  color: #4a4a4a;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .chat-box {
-  height: 400px;
+  flex-grow: 1;
   overflow-y: auto;
   padding: 15px;
   background-color: #ffffff;
