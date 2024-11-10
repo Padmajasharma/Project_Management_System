@@ -1,23 +1,20 @@
-<template>
-  <div class="main-container">
-    <!-- Enhanced Navbar Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light pastel-header">
-      <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" @click="goToDashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="goToMyTeam">My Team</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" @click="goToInbox">Inbox</a>
-          </li>
-        </ul>
-        <button class="btn btn-outline-secondary ml-auto" @click="logout">Logout</button>
-      </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light pastel-header">
+  <a class="navbar-brand" href="#">IITM Student Project Tracker</a>
+  <div class="collapse navbar-collapse d-flex justify-content-between w-100">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" @click="goToDashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" @click="goToMyTeam">My Team</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" @click="goToInbox">Inbox</a>
+      </li>
+    </ul>
+    <button class="btn btn-outline-secondary" @click="logout">Logout</button>
+  </div>
+</nav>
 
     <!-- Chat Container -->
     <div class="chat-wrapper">
