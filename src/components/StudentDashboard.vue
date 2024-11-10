@@ -114,7 +114,7 @@ html, body {
 .container-fluid {
   padding: 0;
   height: 100%;
-  background-color: #f3f4f6; /* Soft off-white pastel */
+  background: linear-gradient(135deg, #f9d4d4, #d4e9f9); /* Soft gradient background */
 }
 
 .main-content {
@@ -124,30 +124,32 @@ html, body {
 
 /* Navbar Styling */
 .navbar {
-  background-color: #f8f9fa; /* Light warm grey */
+  background: linear-gradient(90deg, #f9a8d4, #d1d1f7); /* Soft pink to lavender gradient */
   padding: 15px 20px;
+  border-radius: 10px;
 }
 
 .navbar-brand {
   font-weight: bold;
-  color: #3b7ea1; /* Soft teal blue */
+  color: #5f4b8b; /* Soft purple */
 }
 
 .navbar-nav .nav-link {
-  color: #7a9a92; /* Muted sage green */
+  color: #3b7ea1; /* Soft teal */
+  font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #3b7ea1;
+  color: #ff80ab; /* Pink hover */
 }
 
 .navbar .btn-outline-danger {
-  color: #e57373; /* Soft red */
-  border-color: #e57373;
+  color: #f28b82; /* Light coral */
+  border-color: #f28b82;
 }
 
 .navbar .btn-outline-danger:hover {
-  background-color: #e57373;
+  background-color: #f28b82;
   color: white;
 }
 
@@ -168,23 +170,29 @@ html, body {
 
 /* Card Styling */
 .card {
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  background-color: #ffffff; /* White background for cards */
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
   border: none;
   margin-bottom: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Hover effect to lift the card */
 }
 
 .card-header {
-  background-color: #ebf2f2; /* Light pastel teal */
-  color: #3b7ea1;
+  background: linear-gradient(90deg, #f0d4fc, #d0f0c0); /* Pastel pink and green gradient */
+  color: #5f4b8b;
   font-weight: bold;
   font-size: 1.1rem;
+  border-radius: 10px 10px 0 0;
 }
 
 .card-body {
   padding: 25px;
-  background-color: #f9f9f9; /* Very light pastel gray */
+  background-color: #fafafa;
 }
 
 /* Table Styling */
@@ -195,56 +203,65 @@ html, body {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f7f7f7; /* Very soft pastel for odd rows */
+  background-color: #f9f9f9; /* Soft pastel for odd rows */
 }
 
 .table th {
-  background-color: #dbe9e3; /* Soft mint green */
-  color: #3b7ea1;
+  background: #e1bee7; /* Soft lavender */
+  color: #5f4b8b;
   font-weight: bold;
+}
+
+.table td {
+  color: #3b7ea1; /* Soft teal */
 }
 
 /* Button Styling Inside Table */
 .btn-sm {
   padding: 6px 12px;
   font-size: 14px;
-  border-radius: 4px;
+  border-radius: 25px;
+  transition: transform 0.2s ease;
+}
+
+.btn-sm:hover {
+  transform: scale(1.1); /* Slight scale on hover */
 }
 
 .btn-primary {
-  background-color: #6fa3e3; /* Soft sky blue */
+  background-color: #5fa3e1; /* Soft sky blue */
   border: none;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #5b92d3; /* Slightly darker sky blue */
+  background-color: #4a92d1; /* Slightly darker blue */
 }
 
 .btn-secondary {
-  background-color: #a8d6d1; /* Light mint green */
+  background-color: #a8e6cf; /* Light mint */
   border: none;
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #88b8b3; /* Slightly darker mint green */
+  background-color: #80c4a6; /* Darker mint */
 }
 
 .btn-warning {
-  background-color: #ffb74d; /* Soft orange */
+  background-color: #ffcc80; /* Soft yellow-orange */
   border: none;
   color: white;
 }
 
 .btn-warning:hover {
-  background-color: #ff9e3f; /* Slightly darker orange */
+  background-color: #ffb74d; /* Darker yellow-orange */
 }
 
 /* Progress Bar Styling */
 .progress {
   height: 20px;
-  background-color: #eaf2f1; /* Light pastel mint */
+  background-color: #f3e5f5; /* Light pastel pink */
   border-radius: 10px;
 }
 
@@ -255,7 +272,7 @@ html, body {
   border-radius: 10px;
 }
 
-/* Responsive: Navbar and layout adjustments */
+/* Responsive Design */
 @media (max-width: 767px) {
   .navbar-collapse {
     flex-direction: column;
@@ -265,6 +282,10 @@ html, body {
   .navbar-nav {
     width: 100%;
     justify-content: space-evenly;
+  }
+
+  .card-header {
+    font-size: 1rem;
   }
 }
 </style>
